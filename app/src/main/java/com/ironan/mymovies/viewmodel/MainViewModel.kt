@@ -4,7 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.ironan.mymovies.model.Movie
 import com.ironan.mymovies.network.ApiFactory
-import com.ironan.mymovies.repository.MovieRepository
+import com.ironan.mymovies.repository.MovieRemoteRepository
 import kotlinx.coroutines.*
 import kotlin.coroutines.CoroutineContext
 
@@ -17,14 +17,14 @@ class MainViewModel : ViewModel() {
 
     private val scope = CoroutineScope(coroutineContext)
 
-    private val repository : MovieRepository = MovieRepository(ApiFactory.moviesApi)
+    private val remoteRepository : MovieRemoteRepository = MovieRemoteRepository(ApiFactory.moviesApi)
 
 
     val popularMoviesLiveData = MutableLiveData<MutableList<Movie>>()
 
     fun fetchMovies(){
         scope.launch {
-            val popularMovies = repository.getPopularMovies()
+            val popularMovies = remoteRepository.getPopularMovies()
             popularMoviesLiveData.postValue(popularMovies)
         }
     }

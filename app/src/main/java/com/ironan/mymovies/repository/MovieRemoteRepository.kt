@@ -3,7 +3,7 @@ package com.ironan.mymovies.repository
 import com.ironan.mymovies.model.Movie
 import com.ironan.mymovies.network.MoviesApi
 
-class MovieRepository(private val api : MoviesApi) : BaseRepository() {
+class MovieRemoteRepository(private val api : MoviesApi) : BaseRepository() {
 
     suspend fun getPopularMovies() : MutableList<Movie>?{
 
