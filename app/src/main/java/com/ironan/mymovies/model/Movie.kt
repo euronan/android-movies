@@ -1,7 +1,11 @@
 package com.ironan.mymovies.model
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
+@Entity(tableName = "movie")
 data class Movie (
-    val id: Int,
+    @PrimaryKey val id: Int,
     val vote_average: Double,
     val title: String,
     val overview: String,
